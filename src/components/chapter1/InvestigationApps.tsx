@@ -9,11 +9,11 @@ export function PhotosApp({ onEvidence }: { onEvidence: (id?: string) => void })
   return <div className="photoGrid">{photos.map(p=><button key={p.id} onClick={()=>{setSelected(p);onEvidence(p.evidence)}}><div className="photoThumb">{p.label}</div><span>{p.name}</span></button>)}</div>;
 }
 
-export function RecycleBinApp({ unlocked, onEvidence }: { unlocked: boolean; onEvidence: (id?: string) => void }) {
+export function RecycleBinApp({ unlocked, onEvidence, onLogOpened }: { unlocked: boolean; onEvidence: (id?: string) => void; onLogOpened?: () => void }) {
   const [selected, setSelected] = useState<(typeof recycleEntries)[number] | null>(null);
   if (!unlocked) return <div className="emptyState"><strong>Recycle Bin</strong><span>No recoverable items.</span></div>;
   if (selected) return <div className="reader"><button className="backMini" onClick={()=>setSelected(null)}>← Back</button><h2>{selected.name}</h2><div className="meta">Deleted: {selected.deleted}<br/>Original: {selected.original}</div><pre>{selected.body}</pre></div>;
-  return <div className="fileTable recycleTable">{recycleEntries.map(f=><button key={f.id} onClick={()=>{setSelected(f);onEvidence(f.evidence)}}><span>{f.name}</span><small>{f.deleted}</small><small>{f.original}</small></button>)}</div>;
+  return <div className="fileTable recycleTable">{recycleEntries.map(f=><button key={f.id} onClick={()=>{setSelected(f);onEvidence(f.evidence);if(f.id==='session317')onLogOpened?.()}}><span>{f.name}</span><small>{f.deleted}</small><small>{f.original}</small></button>)}</div>;
 }
 
 export function CaseBoardApp({ evidence, onSolved }: { evidence: string[]; onSolved: () => void }) {
