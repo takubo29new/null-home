@@ -18,6 +18,8 @@ export const evidenceMeta: Record<string, { title: string; source: string }> = {
   E02: { title: 'HOME停止の痕跡', source: 'Mail / Files' },
   E03: { title: 'HOMEデータ削除', source: 'Mail' },
   E04: { title: '317回目の実験', source: 'Messenger' },
+  E05: { title: '朝倉ユウの実験写真', source: 'Photos' },
   E06: { title: '人格再現精度', source: 'Notes' },
   E07: { title: '#317の存在', source: 'Messenger' },
+  E08: { title: '#317終了失敗ログ', source: 'Recycle Bin' },
 };
