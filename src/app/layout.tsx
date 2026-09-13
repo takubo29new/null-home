@@ -1,5 +1,6 @@
 import './globals.css';
 import './investigation.css';
+import './chapter1.css';
 
 export const metadata = {
   title: 'NULL//HOME Prototype',
